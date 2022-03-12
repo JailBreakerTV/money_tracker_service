@@ -15,7 +15,7 @@ plugins {
 }
 
 group = "de.gtopcu"
-version = "1.0.0"
+version = "1.0.1"
 
 configure<JavaPluginExtension> {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -40,14 +40,17 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.10")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.10")
     implementation("org.springframework.boot:spring-boot-starter-cache")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude("org.junit.vintage:junit-vintage-engine")
     }
+    runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 }
 
 tasks.withType<BootBuildImage> {
